@@ -1,0 +1,36 @@
+Table prestamo {
+  id_prestamo integer [primary key]
+  fecha_inicio_prestamo date
+  fecha_estimada_entrega date
+  fecha_real_entrega date
+  monto_penalizacion integer
+  id_ejemplar integer [ref: > ejemplar.id_ejemplar]
+  id_usuario integer [ref: > usuario.id_usuario]
+}
+
+Table ejemplar {
+  id_ejemplar integer [primary key]
+  estado varchar
+  id_libro integer [ref: > libro.id_libro]
+}
+
+Table usuario {
+  id_usuario integer [primary key]
+  nombre varchar
+  dni integer
+  telefono integer
+}
+
+Table libro {
+  id_libro integer [primary key]
+  titulo varchar
+  isbn varchar
+  año integer
+  id_autor integer [ref: > autor.id_autor]
+}
+
+Table autor {
+  id_autor integer [primary key]
+  nombre varchar
+  nacionalidad varchar
+}
