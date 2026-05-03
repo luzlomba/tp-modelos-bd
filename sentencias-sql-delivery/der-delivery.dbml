@@ -1,0 +1,41 @@
+Table cliente {
+  id_cliente integer [primary key]
+  nombre varchar
+  direccion varchar
+  telefono varchar
+}
+
+Table repartidor {
+  id_repartidor integer [primary key]
+  nombre varchar
+  telefono varchar
+}
+
+Table restaurante {
+  id_restaurante integer [primary key]
+  nombre varchar
+  tipo_de_cocina varchar
+}
+
+Table plato {
+  id_plato integer [primary key]
+  nombre varchar
+  precio int
+  descripcion varchar
+  id_restaurante integer [ref: > restaurante.id_restaurante]
+}
+
+Table pedido {
+  id_pedido integer [primary key]
+  estado varchar
+  fecha date
+  id_cliente integer [ref: > cliente.id_cliente]
+  id_repartidor integer [ref: > repartidor.id_repartidor]
+  id_restaurante integer [ref: > restaurante.id_restaurante]
+}
+
+Table pedido_plato {
+  id_pedido integer [ref: > pedido.id_pedido]
+  id_plato integer [ref: > plato.id_plato]
+  cantidad integer
+}
